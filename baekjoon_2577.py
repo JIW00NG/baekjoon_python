@@ -1,17 +1,17 @@
 import sys
 from functools import reduce
 
-n_list=[]
-count=[0 for i in range(10)]
+n_list = []
+count = [0 for i in range(10)]
 
-for i in  range(3):
+for i in range(3):
     n_list.append(int(sys.stdin.readline()))
 
-multi=reduce(lambda x,y:x*y,n_list)
+multi = reduce(lambda x,y : x * y, n_list)
 
 def division(n):
     for i in range(len(str(n))):
-        if n%10==0:
+        if n % 10 == 0:
             count[0] += 1
         elif n%10==1:
             count[1] += 1
