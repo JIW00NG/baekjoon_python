@@ -21,3 +21,22 @@
 # 출력
 # 프로그램은 표준 출력에 출력한다. 각 테스트 데이터마다 정확히 한 행을 출력하는데, 내용은 N 번째 손님에게 배정되어야 하는 방 번호를 출력한다.
 
+import sys
+import math
+
+T = int(sys.stdin.readline())
+
+for i in range(T):
+    H, W, N = map(int, sys.stdin.readline().split())
+    if H * W < N:
+        print("Sorry, There is no empty room")
+        break
+    XX = str(math.ceil(N / H))
+    if len(XX) == 1:
+        XX = "0" + XX
+    if N % H == 0:
+        YY = str(H)
+    else:
+        YY = str(N % H)
+
+    print(YY+XX)
