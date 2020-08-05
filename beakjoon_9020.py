@@ -16,23 +16,51 @@
 
 # n의 최대 약수가 sqrt(n) 이하이므로 i=sqrt(n)까지 검사
 
-def prime_list(n): # 에라토스테네스의 체 초기화: n개 요소에 True 설정(소수로 간주)
-    # sieve = [True] * n
 
-    # n의 최대 약수가 sqrt(n) 이하이므로 i=sqrt(n)까지 검사
-    m = int(n ** 0.5)
-    for i in range(2, m + 1):
-        if sieve[i] == True:           # i가 소수인 경우
-            for j in range(i+i, n, i): # i이후 i의 배수들을 False 판정
-                sieve[j] = False
-
-    # 소수 목록 산출
-    return [i for i in range(2, n) if sieve[i] == True]
+# 1
 
 import sys
 
 T = int(sys.stdin.readline())
 
-for i in range(T):
+for _ in range(T):
     n = int(sys.stdin.readline())
+    primenum = [True] * n
+    primenum[0] = primenum[1] = False
+    for i in range(2, int(n ** (1 / 2)) + 1):
+        if primenum[i]:
+            for j in range(2 * i, n, i):
+                primenum[j] = False
 
+    for k in range(n // 2 + 1)[::-1]:
+        if primenum[k] and primenum[n - k]:
+            print(k, n - k)
+            break
+
+
+# 2
+#
+# def prime_list(n):
+#     sieve = [True] * n
+#
+#     m = int(n ** 0.5)
+#     for i in range(2, m + 1):
+#         if sieve[i]:
+#             for j in range(i + i, n, i):
+#                 sieve[j] = False
+#
+#     return sieve
+#
+#
+# import sys
+#
+# T = int(sys.stdin.readline())
+#
+# for i in range(T):
+#     n = int(sys.stdin.readline())
+#     primenum = prime_list(n)
+#
+#     for j in range(n // 2, n):
+#         if primenum[j] and primenum[n - j]:
+#             print(n - j, j)
+#             break
