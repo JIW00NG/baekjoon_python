@@ -36,7 +36,7 @@ _언어: 파이썬_
 **에라토스테네스의 체를 프로그래밍 언어로 구현**
 
 ◆ C++로 이 알고리즘을 다음과 같이 구현할 수 있다.
-
+'''
 void Eratos(int n)
 {
     /*  만일 n이 1보다 작거나 같으면 함수 종료 */
@@ -67,8 +67,10 @@ void Eratos(int n)
 
 	// 이후의 작업 ...
 }
-◆ java 로 구현
+'''
 
+◆ java 로 구현
+'''
 public class Eratos {
 	public static void main(String[] args) {
 		// ArrayList로 구현
@@ -112,9 +114,11 @@ public class Eratos {
 
 	}
 }
+'''
 
 ◆ python(3.6.4)으로 구현[1]
 
+'''
 def prime_list(n):
     # 에라토스테네스의 체 초기화: n개 요소에 True 설정(소수로 간주)
     sieve = [True] * n
@@ -128,27 +132,31 @@ def prime_list(n):
 
     # 소수 목록 산출
     return [i for i in range(2, n) if sieve[i] == True]
+'''
 결과:
-
+'''
 prime_list(20)
 [2, 3, 5, 7, 11, 13, 17, 19]
 
 max(prime_list(1000000))
 999983
+'''
 ◆ Haskell 로 구현
 
 타입 정보 있는 버전 (권장)
-
+'''
 primes :: [Int]
 primes = sieve [2..]
            where sieve :: [Int] -> [Int]
                  sieve (prime : xs) = prime : sieve [x | x <- xs, x `mod` prime /= 0]
+'''
 타입 정보 없는 버전 (Haskell의 타입 추론 이용)
-
+'''
 primes = sieve [2..]
            where sieve (prime : xs) = prime : sieve [x | x <- xs, x `mod` prime /= 0]
+'''
 결과:
-
+'''
 -- 처음 소수 10개 찾기
 take 10 primes
 [2,3,5,7,11,13,17,19,23,29]
@@ -156,3 +164,4 @@ take 10 primes
 -- 100보다 큰 소수 5개 찾기
 take 5 $ filter (>100) primes
 [101,103,107,109,113]
+'''
