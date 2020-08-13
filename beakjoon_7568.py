@@ -20,3 +20,21 @@
 # 출력
 # 여러분은 입력에 나열된 사람의 덩치 등수를 구해서 그 순서대로 첫 줄에 출력해야 한다. 단, 각 덩치 등수는 공백문자로 분리되어야 한다.
 
+import sys
+
+N = int(sys.stdin.readline())
+
+weight = [0] * N
+height = [0] * N
+priority = [0] * N
+
+for i in range(N):
+    weight[i], height[i] = map(int, sys.stdin.readline().split())
+
+for j in range(N):
+    for k in range(N):
+        if weight[j] < weight[k] and height[j] < height[k]:
+            priority[j] = priority[j] + 1
+
+for n in priority:
+    print(n + 1, end=" ")
