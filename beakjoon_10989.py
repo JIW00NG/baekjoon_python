@@ -12,10 +12,9 @@
 
 import sys
 
-N = int(sys.stdin.readline())
-num_list = list(map(int, sys.stdin.readline().split()))
+num_list = []
+for _ in range(int(sys.stdin.readline())):
+    num_list.append(int(sys.stdin.readline()))
 
-print(num_list)
-while len(num_list) > 0:
-    print(min(num_list))
-    num_list.remove(min(num_list))
+for i in sorted(num_list):
+    print(i)

@@ -23,30 +23,31 @@
 # 넷째 줄에는 범위를 출력한다.
 
 import sys
+from collections import Counter
 
 N = int(sys.stdin.readline())
 num_list = []
 
 for _ in range(N):
     num_list.append(int(sys.stdin.readline()))
+num_list.sort()
 
-aver = round(sum(num_list) / len(num_list))
-median = sorted(num_list)[len(num_list) // 2]
+mean = round(sum(num_list) / N)
 
-cnt = 0
-mode = []
-for i in num_list:
-    if cnt < num_list.count(i):
-        cnt = num_list.count(i)
-        mode = i
-num_list.remove(mode)
-for j in sorted(num_list):
-    if cnt == num_list.count(j):
-        mode = j
+median = num_list[N // 2]
+
+if N > 1:
+    mode = Counter(num_list).most_common(2)
+    if mode[0][1] == mode[1][1]:
+        mode = mode[1][0]
+    else:
+        mode = mode[0][0]
+else:
+    mode = num_list[0]
 
 bounds = max(num_list) - min(num_list)
 
-print(aver)
+print(mean)
 print(median)
 print(mode)
 print(bounds)
