@@ -21,4 +21,12 @@
 import sys
 
 N = int(sys.stdin.readline())
+init = 666
 
+while N:
+    if '666' in str(init):
+        print(init)
+        N = N - 1
+
+    init = init + 1
+print(init - 1)
