@@ -16,9 +16,35 @@
 
 import sys
 
+black = "B"
+white = "W"
+result = 0
+
 N, M = map(int, sys.stdin.readline().split())
 chessboard = []
+board = []
 
-for _ in range(N):
-    chessboard.append(list(sys.stdin.readline().strip()))
+# for _ in range(N):
+#     chessboard.append(list(map(str, sys.stdin.readline().split(""))))
 
+s = """1234567890
+2234567890
+3234567890
+4234567890
+5234567890
+6234567890
+7234567890
+8234567890
+9234567890
+0234567890"""
+for i in s:
+    if i != "\n":
+        board.append(i)
+    else:
+        chessboard.append(board)
+        board = []
+
+for i in range(N - 7):
+    for j in range(M - 7):
+        board = [chessboard[i][j: j + 7], chessboard[i + 1][j: j + 7], chessboard[i + 2][j: j + 7], chessboard[i + 3][j: j + 7], chessboard[i + 4][j: j + 7], chessboard[i + 5][j: j + 7], chessboard[i + 6][j: j + 7], chessboard[i + 7][j: j + 7]]
+        print(board)

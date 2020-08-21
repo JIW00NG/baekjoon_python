@@ -17,14 +17,22 @@
 # 출력
 # 첫째 줄부터 N번째 줄까지 별을 출력한다.
 
-def printstar(n):
-    print("***")
-    print("* *")
+def star(i, j):
+    while(i != 0):
+        # 몫이 1인 경우
+        if(i % 3 == 1 and j % 3 == 1):
+            print(" ", end="")
+            return
+        # 3으로 나누어서 위의 if문에 걸리면 그 부분도 빈칸 처리
+        i = i // 3
+        j = j // 3
+    print("*", end="")
 
-    printstar(n / 3)
 
 import sys
 
 N = int(sys.stdin.readline())
-
-printstar(N)
+for i in range(N):
+    for j in range(N):
+            star(i, j)
+    print()
