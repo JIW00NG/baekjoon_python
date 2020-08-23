@@ -16,35 +16,31 @@
 
 import sys
 
-black = "B"
-white = "W"
-result = 0
+start_W = "WBWBWBWB"
+start_B = "BWBWBWBW"
+chessboard = []
+
 
 N, M = map(int, sys.stdin.readline().split())
-chessboard = []
-board = []
 
-# for _ in range(N):
-#     chessboard.append(list(map(str, sys.stdin.readline().split(""))))
+for _ in range(N):
+    chessboard.append(sys.stdin.readline().strip())
 
-s = """1234567890
-2234567890
-3234567890
-4234567890
-5234567890
-6234567890
-7234567890
-8234567890
-9234567890
-0234567890"""
-for i in s:
-    if i != "\n":
-        board.append(i)
-    else:
-        chessboard.append(board)
-        board = []
 
-for i in range(N - 7):
+for i in range(N):
     for j in range(M - 7):
-        board = [chessboard[i][j: j + 7], chessboard[i + 1][j: j + 7], chessboard[i + 2][j: j + 7], chessboard[i + 3][j: j + 7], chessboard[i + 4][j: j + 7], chessboard[i + 5][j: j + 7], chessboard[i + 6][j: j + 7], chessboard[i + 7][j: j + 7]]
-        print(board)
+        chessboard[i][j: j + 8]
+
+
+'''
+ 1 BBBBBBBBWBWBW (M + 1) * 0 ~ (M + 1) * 1 - 2, M * 1
+ 2 BBBBBBBBBWBWB (M + 1) * 1 ~ (M + 1) * 2 - 2, M * 2
+ 3 BBBBBBBBWBWBW (M + 1) * 2 ~ (M + 1) * 3 - 2, M * 3
+ 4 BBBBBBBBBWBWB (M + 1) * 3 ~ (M + 1) * 4 - 2, M * 4
+ 5 BBBBBBBBWBWBW (M + 1) * 4 ~ (M + 1) * 5 - 2, M * 5
+ 6 BBBBBBBBBWBWB (M + 1) * 5 ~ (M + 1) * 6 - 2, M * 6
+ 7 BBBBBBBBWBWBW (M + 1) * 6 ~ (M + 1) * 7 - 2, M * 7
+ 8 BBBBBBBBBWBWB (M + 1) * 7 ~ (M + 1) * 8 - 2, M * 8
+ 9 WWWWWWWWWWBWB (M + 1) * 8 ~ (M + 1) * 9 - 2, M * 9
+10 WWWWWWWWWWBWB (M + 1) * 9 ~ (M + 1) * 10 - 2, M * 10
+'''
