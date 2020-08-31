@@ -35,26 +35,19 @@
 # 각 테스트 케이스마다 0이 출력되는 횟수와 1이 출력되는 횟수를 공백으로 구분해서 출력한다.
 
 
-def fibonacci(n):
-    if n == 0:
-        print("0")
-        zero_cnt = zero_cnt + 1
-        return 0
-    elif n == 1:
-        print("1")
-        one_cnt = one_cnt + 1
-        return 1
-    else:
-        return fibonacci(n - 1) + fibonacci(n - 2)
-
-
 import sys
 
 T = int(sys.stdin.readline())
 
 for _ in range(T):
-    one_cnt = 0
-    zero_cnt = 0
-
     N = int(sys.stdin.readline())
-    
+    result = [1, 0]
+
+    if N != 0:
+        result = [1, 0]
+        for _ in range(N):
+            tmp = sum(result)
+            result[0] = result[1]
+            result[1] = tmp
+
+    print(result[0], result[1])

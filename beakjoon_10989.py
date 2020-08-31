@@ -13,8 +13,6 @@
 import sys
 
 num_list = []
+
 for _ in range(int(sys.stdin.readline())):
     num_list.append(int(sys.stdin.readline()))
-
-for i in sorted(num_list):
-    print(i)
