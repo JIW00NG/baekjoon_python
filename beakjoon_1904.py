@@ -16,8 +16,17 @@
 # 출력
 # 첫 번째 줄에 지원이가 만들 수 있는 길이가 N인 모든 2진 수열의 개수를 15746으로 나눈 나머지를 출력한다.
 
-
 import sys
+
 
 N = int(sys.stdin.readline())
 
+fir = 1
+sec = 2
+
+for _ in range(N - 1):
+    tmp = (fir + sec) % 15746
+    fir = sec
+    sec = tmp
+
+print(fir)
